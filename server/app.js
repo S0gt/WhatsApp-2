@@ -1,4 +1,9 @@
-const express = require('express');
+const express = require('exp// Rutas
+app.use('/api/auth', require('./routes/auth'));
+app.use('/api/users', require('./routes/users'));
+app.use('/api/chats', require('./routes/chats'));
+app.use('/api/uploads', require('./routes/uploads'));
+app.use('/api/debug', require('./routes/debug')); // Rutas de debugging);
 const http = require('http');
 const socketIo = require('socket.io');
 const path = require('path');
@@ -31,6 +36,7 @@ app.use('/api/auth', authRoutes);
 app.use('/api/users', userRoutes);
 app.use('/api/chats', chatRoutes);
 app.use('/api/upload', uploadRoutes);
+app.use('/api/debug', require('./routes/debug')); // Rutas de debugging
 
 // Serve main page
 app.get('/', (req, res) => {

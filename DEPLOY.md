@@ -150,6 +150,31 @@ API_URL=https://tu-app-name.onrender.com/api
 3. **Socket.IO not working**: Verificar CORS_ORIGIN
 4. **Files not uploading**: Verificar permisos de directorio
 
+### 🔍 Herramientas de Debug
+
+Si el despliegue no funciona, usa estas URLs para diagnosticar:
+
+#### URLs de Debug Disponibles:
+- `https://tu-app.onrender.com/api/debug/status` - Estado general del servicio
+- `https://tu-app.onrender.com/api/debug/env` - Variables de entorno configuradas
+- `https://tu-app.onrender.com/api/debug/db-test` - Test de conexión a MySQL
+
+#### Problemas Específicos:
+
+**🚨 Error: "Host: localhost" en logs**
+- **Causa**: Variables de entorno no configuradas en Render
+- **Solución**: Ir a Render Dashboard → Environment y configurar todas las variables DB_*
+
+**🚨 Error: Connection refused**
+- **Causa**: Base de datos no accesible desde Render
+- **Solución**: Verificar que Railway permite conexiones externas y host es correcto
+
+**🚨 Variables "no definido"**
+- **Causa**: Configuración incompleta en Render
+- **Solución**: Verificar que todas las variables estén en Environment tab
+
+Ver `DEBUG-RENDER.md` para guía completa de troubleshooting con ejemplos.
+
 ### Logs útiles:
 ```bash
 # En Render dashboard

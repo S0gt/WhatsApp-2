@@ -11,8 +11,6 @@ const pool = mysql.createPool({
   waitForConnections: true,
   connectionLimit: 10,
   queueLimit: 0,
-  acquireTimeout: 60000,
-  timeout: 60000,
   reconnect: true,
   ssl: process.env.NODE_ENV === 'production' ? {
     rejectUnauthorized: false
@@ -26,10 +24,18 @@ const promisePool = pool.promise();
 async function testConnection() {
   try {
     console.log('🔍 Intentando conectar a MySQL...');
-    console.log(`📍 Host: ${process.env.DB_HOST || 'localhost'}`);
-    console.log(`👤 Usuario: ${process.env.DB_USER || 'root'}`);
-    console.log(`🗄️ Base de datos: ${process.env.DB_NAME || 'whatsapp2'}`);
-    console.log(`🔌 Puerto: ${process.env.DB_PORT || 3306}`);
+    console.log('🌍 Environment:', process.env.NODE_ENV || 'development');
+    console.log('📋 Variables de entorno MySQL:');
+    console.log(`   DB_HOST: ${process.env.DB_HOST || 'NO DEFINIDO'}`);
+    console.log(`   DB_USER: ${process.env.DB_USER || 'NO DEFINIDO'}`);
+    console.log(`   DB_PASSWORD: ${process.env.DB_PASSWORD ? '[DEFINIDA]' : 'NO DEFINIDA'}`);
+    console.log(`   DB_NAME: ${process.env.DB_NAME || 'NO DEFINIDO'}`);
+    console.log(`   DB_PORT: ${process.env.DB_PORT || 'NO DEFINIDO'}`);
+    console.log('📍 Valores que se usarán:');
+    console.log(`   Host: ${process.env.DB_HOST || 'localhost'}`);
+    console.log(`   Usuario: ${process.env.DB_USER || 'root'}`);
+    console.log(`   Base de datos: ${process.env.DB_NAME || 'whatsapp2'}`);
+    console.log(`   Puerto: ${process.env.DB_PORT || 3306}`);
     
     const [rows] = await promisePool.execute('SELECT 1 as test');
     console.log('✅ Conexión a MySQL establecida correctamente');
@@ -41,6 +47,13 @@ async function testConnection() {
     console.error('🔍 Código:', error.code);
     console.error('📊 Errno:', error.errno);
     if (error.sqlState) console.error('🔗 SQL State:', error.sqlState);
+    
+    console.log('\n💡 Debugging para Render:');
+    console.log('   1. Verificar que las variables de entorno estén configuradas en Render');
+    console.log('   2. DB_HOST debe ser el host de Railway, no localhost');
+    console.log('   3. DB_NAME debe ser "railway" para Railway MySQL');
+    console.log('   4. DB_PASSWORD debe ser la contraseña de Railway');
+    
     return false;
   }
 }
