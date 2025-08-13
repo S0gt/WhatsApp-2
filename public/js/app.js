@@ -1,6 +1,6 @@
 // app.js - Punto de entrada principal de la aplicación
 
-class SuperChatApp {
+class WhatsApp2App {
   constructor() {
     this.authManager = null;
     this.chatManager = null;
@@ -10,7 +10,7 @@ class SuperChatApp {
   }
 
   async init() {
-    console.log('🚀 Iniciando SuperChat...');
+    console.log('🚀 Iniciando WhatsApp 2...');
     
     // Inicializar gestor de autenticación
     this.authManager = new AuthManager();
@@ -51,7 +51,7 @@ class SuperChatApp {
     // Cargar datos iniciales
     this.loadInitialData();
     
-    console.log('✅ SuperChat iniciado correctamente');
+    console.log('✅ WhatsApp 2 iniciado correctamente');
   }
 
   async loadInitialData() {
@@ -127,10 +127,10 @@ class SuperChatApp {
 
 // Inicializar la aplicación cuando el DOM esté listo
 document.addEventListener('DOMContentLoaded', () => {
-  console.log('📱 DOM cargado, iniciando SuperChat...');
+  console.log('📱 DOM cargado, iniciando WhatsApp 2...');
   
   // Crear instancia principal de la aplicación
-  window.superChatApp = new SuperChatApp();
+  window.whatsApp2App = new WhatsApp2App();
 });
 
 // Manejo de errores globales
@@ -161,13 +161,13 @@ window.addEventListener('unhandledrejection', (event) => {
 window.addEventListener('beforeunload', (event) => {
   if (window.authManager?.user && window.chatManager?.socket?.connected) {
     event.preventDefault();
-    event.returnValue = '¿Estás seguro de que quieres salir de SuperChat?';
+    event.returnValue = '¿Estás seguro de que quieres salir de WhatsApp 2?';
     return event.returnValue;
   }
 });
 
 // Funciones de utilidad globales
-window.SuperChatUtils = {
+window.WhatsApp2Utils = {
   // Formatear tiempo
   formatTime: (timestamp) => {
     const date = new Date(timestamp);
@@ -226,4 +226,4 @@ window.SuperChatUtils = {
   }
 };
 
-console.log('📋 SuperChat App cargado - Versión 1.0.0');
+console.log('📋 WhatsApp 2 App cargado - Versión 1.0.0');

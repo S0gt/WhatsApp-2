@@ -6,7 +6,7 @@ const pool = mysql.createPool({
   host: process.env.DB_HOST || 'localhost',
   user: process.env.DB_USER || 'root',
   password: process.env.DB_PASSWORD || '',
-  database: process.env.DB_NAME || 'superchat',
+  database: process.env.DB_NAME || 'whatsapp2',
   waitForConnections: true,
   connectionLimit: 10,
   queueLimit: 0
@@ -30,7 +30,7 @@ async function testConnection() {
 // Función para inicializar las tablas
 async function initializeTables() {
   try {
-    console.log('📊 Base de datos SuperChat verificada');
+    console.log('📊 Base de datos WhatsApp 2 verificada');
     
     // Crear tabla de usuarios
     await promisePool.execute(`

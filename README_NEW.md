@@ -1,10 +1,10 @@
-# 💬 WhatsApp 2
+# 💬 SuperChat
 
 Una aplicación de chat en tiempo real inspirada en chatgratis.net, desarrollada con tecnologías modernas.
 
 ## 🌐 Demo en Vivo
 
-🚀 **[Ver aplicación en vivo](https://whatsapp2.onrender.com)** (próximamente)
+🚀 **[Ver aplicación en vivo](https://superchat.onrender.com)** (próximamente)
 
 ## ✨ Características
 
@@ -28,8 +28,8 @@ Una aplicación de chat en tiempo real inspirada en chatgratis.net, desarrollada
 
 1. **Clonar repositorio**
 ```bash
-git clone https://github.com/tu-usuario/whatsapp2.git
-cd whatsapp2
+git clone https://github.com/tu-usuario/superchat.git
+cd superchat
 ```
 
 2. **Instalar dependencias**
@@ -42,7 +42,7 @@ npm install
 # Mac con Homebrew
 brew install mysql
 brew services start mysql
-mysql -u root -p -e "CREATE DATABASE whatsapp2;"
+mysql -u root -p -e "CREATE DATABASE superchat;"
 ```
 
 4. **Configurar variables de entorno**
@@ -68,7 +68,7 @@ PORT=10000
 DB_HOST=tu-mysql-host
 DB_USER=tu-usuario
 DB_PASSWORD=tu-password
-DB_NAME=whatsapp2
+DB_NAME=superchat
 JWT_SECRET=tu-jwt-secret-seguro
 ```
 
@@ -80,7 +80,7 @@ JWT_SECRET=tu-jwt-secret-seguro
 ## 📁 Estructura
 
 ```
-whatsapp2/
+superchat/
 ├── server/                 # Backend
 │   ├── app.js             # Servidor principal
 │   ├── db.js              # Configuración MySQL

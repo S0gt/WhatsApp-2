@@ -1,8 +1,8 @@
--- Esquema de base de datos para SuperChat
+-- Esquema de base de datos para WhatsApp 2
 -- Ejecutar este script en MySQL para crear las tablas necesarias
 
-CREATE DATABASE IF NOT EXISTS superchat;
-USE superchat;
+CREATE DATABASE IF NOT EXISTS whatsapp2;
+USE whatsapp2;
 
 -- Tabla de usuarios
 CREATE TABLE IF NOT EXISTS users (

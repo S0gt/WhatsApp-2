@@ -1,6 +1,6 @@
-# 🚀 Guía de Instalación - SuperChat
+# 🚀 Guía de Instalación - WhatsApp 2
 
-Esta guía te ayudará a instalar y configurar SuperChat en tu sistema, tanto en **macOS** como en **Windows**.
+Esta guía te ayudará a instalar y configurar WhatsApp 2 en tu sistema, tanto en **macOS** como en **Windows**.
 
 ## 📋 Requisitos Previos
 
@@ -88,10 +88,10 @@ git --version
 ```bash
 # Si tienes Git configurado
 git clone <URL_DEL_REPOSITORIO>
-cd superchat
+cd whatsapp2
 
 # O simplemente descomprime la carpeta del proyecto
-cd superchat
+cd whatsapp2
 ```
 
 ### 2. Instalar dependencias de Node.js
@@ -107,11 +107,11 @@ npm install
 mysql -u root
 
 # Crear base de datos
-CREATE DATABASE superchat;
+CREATE DATABASE whatsapp2;
 exit;
 
 # Ejecutar el esquema
-mysql -u root superchat < db/schema.sql
+mysql -u root whatsapp2 < db/schema.sql
 ```
 
 #### En Windows:
@@ -120,11 +120,11 @@ mysql -u root superchat < db/schema.sql
 mysql -u root -p
 
 # Crear base de datos
-CREATE DATABASE superchat;
+CREATE DATABASE whatsapp2;
 exit;
 
 # Ejecutar el esquema
-mysql -u root -p superchat < db/schema.sql
+mysql -u root -p whatsapp2 < db/schema.sql
 ```
 
 ### 4. Configurar variables de entorno
@@ -138,8 +138,8 @@ NODE_ENV=development
 DB_HOST=localhost
 DB_USER=root
 DB_PASSWORD=
-DB_NAME=superchat
-JWT_SECRET=superchat_secret_key_change_in_production
+DB_NAME=whatsapp2
+JWT_SECRET=whatsapp2_secret_key_change_in_production
 ```
 
 **Para Windows (con contraseña):**
@@ -149,13 +149,13 @@ NODE_ENV=development
 DB_HOST=localhost
 DB_USER=root
 DB_PASSWORD=tu_contraseña_mysql
-DB_NAME=superchat
-JWT_SECRET=superchat_secret_key_change_in_production
+DB_NAME=whatsapp2
+JWT_SECRET=whatsapp2_secret_key_change_in_production
 ```
 
 ---
 
-## 🚀 Instrucciones para Lanzar SuperChat
+## 🚀 Instrucciones para Lanzar WhatsApp 2
 
 ### 1. Verificar que MySQL esté funcionando
 
@@ -189,7 +189,7 @@ npm start
 ### 4. Abrir la aplicación
 1. Abre tu navegador web
 2. Ve a: **http://localhost:3000**
-3. ¡Listo! Ya puedes usar SuperChat
+3. ¡Listo! Ya puedes usar WhatsApp 2
 
 ---
 
@@ -200,10 +200,10 @@ Cuando ejecutes `npm run dev`, deberías ver algo así:
 🔍 Verificando conexión a MySQL...
 ✅ Conexión a MySQL establecida correctamente
 🗄️ Inicializando tablas de la base de datos...
-📊 Base de datos SuperChat verificada
+📊 Base de datos WhatsApp 2 verificada
 🗄️ Todas las tablas han sido creadas/verificadas
 🏠 Salas por defecto creadas
-🎉 ¡SuperChat iniciado exitosamente!
+🎉 ¡WhatsApp 2 iniciado exitosamente!
 🚀 Servidor funcionando en puerto 3000
 📱 Accede en: http://localhost:3000
 🔗 Base de datos conectada y configurada
@@ -242,7 +242,7 @@ sudo chown -R $(whoami) /usr/local/lib/node_modules
 
 ---
 
-## 📱 Primeros Pasos en SuperChat
+## 📱 Primeros Pasos en WhatsApp 2
 
 1. **Registrarse**: Crea tu cuenta con email y contraseña
 2. **Personalizar perfil**: Sube una foto y establece tu estado
@@ -263,7 +263,7 @@ Si tienes problemas:
 
 ---
 
-## 🎉 ¡Disfruta SuperChat!
+## 🎉 ¡Disfruta WhatsApp 2!
 
 Una vez que todo esté funcionando, tendrás acceso a:
 - ✅ Chat en tiempo real

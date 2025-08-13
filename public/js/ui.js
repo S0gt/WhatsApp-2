@@ -4,7 +4,7 @@ class UIManager {
   constructor(authManager, chatManager) {
     this.auth = authManager;
     this.chat = chatManager;
-    this.currentTheme = localStorage.getItem('superchat_theme') || 'light';
+    this.currentTheme = localStorage.getItem('whatsapp2_theme') || 'light';
     
     this.initializeUI();
     this.applyTheme();
@@ -335,7 +335,7 @@ class UIManager {
   applyTheme(theme = this.currentTheme) {
     this.currentTheme = theme;
     document.documentElement.setAttribute('data-theme', theme);
-    localStorage.setItem('superchat_theme', theme);
+    localStorage.setItem('whatsapp2_theme', theme);
   }
 
   // Perfil de usuario

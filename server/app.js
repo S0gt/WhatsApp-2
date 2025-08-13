@@ -122,7 +122,7 @@ async function startServer() {
 
     // Iniciar servidor
     server.listen(PORT, () => {
-      console.log('🎉 ¡SuperChat iniciado exitosamente!');
+      console.log('🎉 ¡WhatsApp 2 iniciado exitosamente!');
       console.log(`🚀 Servidor funcionando en puerto ${PORT}`);
       console.log(`📱 Accede en: http://localhost:${PORT}`);
       console.log('🔗 Base de datos conectada y configurada');

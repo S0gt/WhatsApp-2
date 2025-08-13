@@ -2,7 +2,7 @@
 
 class AuthManager {
   constructor() {
-    this.token = localStorage.getItem('superchat_token');
+    this.token = localStorage.getItem('whatsapp2_token');
     this.user = null;
     this.apiUrl = '/api';
   }
@@ -49,7 +49,7 @@ class AuthManager {
       if (response.ok) {
         this.token = data.token;
         this.user = data.user;
-        localStorage.setItem('superchat_token', this.token);
+        localStorage.setItem('whatsapp2_token', this.token);
         return { success: true, data };
       } else {
         return { success: false, error: data.message };
@@ -76,7 +76,7 @@ class AuthManager {
       if (response.ok) {
         this.token = data.token;
         this.user = data.user;
-        localStorage.setItem('superchat_token', this.token);
+        localStorage.setItem('whatsapp2_token', this.token);
         return { success: true, data };
       } else {
         return { success: false, error: data.message };
@@ -109,7 +109,7 @@ class AuthManager {
   clearAuth() {
     this.token = null;
     this.user = null;
-    localStorage.removeItem('superchat_token');
+    localStorage.removeItem('whatsapp2_token');
   }
 
   // Obtener headers de autorización

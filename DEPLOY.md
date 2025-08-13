@@ -1,4 +1,4 @@
-# SuperChat - Despliegue en Render
+# WhatsApp 2 - Despliegue en Render
 
 ## Pasos para desplegar en Render
 
@@ -13,11 +13,11 @@
 1. Ve a [render.com](https://render.com) y crea cuenta
 2. Click en "New" → "Web Service"
 3. Conecta tu repositorio de GitHub
-4. Selecciona el repositorio `superchat`
+4. Selecciona el repositorio `whatsapp2`
 
 #### B. Configuración del servicio
 ```
-Name: superchat (o el que prefieras)
+Name: whatsapp2 (o el que prefieras)
 Environment: Node.js
 Region: Oregon (US West) - más cercano
 Branch: main
@@ -35,7 +35,7 @@ PORT=10000
 DB_HOST=tu-database-host
 DB_USER=tu-database-user
 DB_PASSWORD=tu-database-password
-DB_NAME=superchat
+DB_NAME=whatsapp2
 JWT_SECRET=un-secret-muy-seguro-y-largo-para-produccion
 SOCKET_CORS_ORIGIN=https://tu-app-name.onrender.com
 MAX_FILE_SIZE=52428800
@@ -144,4 +144,4 @@ API_URL=https://tu-app-name.onrender.com/api
 - **Railway MySQL**: $0 (512MB) → $5/mes (1GB)
 - **Total**: Gratis para empezar, ~$12/mes para uso real
 
-¡Tu SuperChat estará disponible 24/7 en internet! 🚀
+¡Tu WhatsApp 2 estará disponible 24/7 en internet! 🚀

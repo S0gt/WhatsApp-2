@@ -1,4 +1,4 @@
-Plan del Proyecto "SuperChat"
+Plan del Proyecto "WhatsApp 2"
 1. Funcionalidades obligatorias
 
 Registro / Login (correo + contraseña, con cifrado de contraseñas en la base de datos).

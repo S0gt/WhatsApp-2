@@ -1,5 +1,5 @@
 {
-  "name": "superchat",
+  "name": "whatsapp2",
   "version": "1.0.0",
   "main": "server/app.js",
   "scripts": {
@@ -11,7 +11,7 @@
   "keywords": ["chat", "socket.io", "express", "real-time"],
   "author": "",
   "license": "ISC",
-  "description": "SuperChat - Real-time chat application with file sharing and customization",
+  "description": "WhatsApp 2 - Real-time chat application with file sharing and customization",
   "dependencies": {
     "bcryptjs": "^3.0.2",
     "cors": "^2.8.5",
