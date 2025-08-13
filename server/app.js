@@ -1,9 +1,4 @@
-const express = require('exp// Rutas
-app.use('/api/auth', require('./routes/auth'));
-app.use('/api/users', require('./routes/users'));
-app.use('/api/chats', require('./routes/chats'));
-app.use('/api/uploads', require('./routes/uploads'));
-app.use('/api/debug', require('./routes/debug')); // Rutas de debugging);
+const express = require('express');
 const http = require('http');
 const socketIo = require('socket.io');
 const path = require('path');
