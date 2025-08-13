@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SuperChat - Chat en tiempo real</title>
+    <link rel="stylesheet" href="/css/style.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <!-- Pantalla de login/registro -->
+    <div id="authScreen" class="auth-screen">
+        <div class="auth-container">
+            <div class="auth-header">
+                <h1><i class="fas fa-comments"></i> SuperChat</h1>
+                <p>Tu espacio para chatear en tiempo real</p>
+            </div>
+            
+            <!-- Formulario de Login -->
+            <div id="loginForm" class="auth-form active">
+                <h2>Iniciar Sesión</h2>
+                <form id="loginFormElement">
+                    <div class="form-group">
+                        <i class="fas fa-envelope"></i>
+                        <input type="email" id="loginEmail" placeholder="Correo electrónico" required>
+                    </div>
+                    <div class="form-group">
+                        <i class="fas fa-lock"></i>
+                        <input type="password" id="loginPassword" placeholder="Contraseña" required>
+                    </div>
+                    <button type="submit" class="btn-primary">
+                        <i class="fas fa-sign-in-alt"></i> Entrar
+                    </button>
+                </form>
+                <p class="switch-auth">
+                    ¿No tienes cuenta? <a href="#" id="showRegister">Regístrate aquí</a>
+                </p>
+            </div>
+
+            <!-- Formulario de Registro -->
+            <div id="registerForm" class="auth-form">
+                <h2>Crear Cuenta</h2>
+                <form id="registerFormElement">
+                    <div class="form-group">
+                        <i class="fas fa-user"></i>
+                        <input type="text" id="registerUsername" placeholder="Nombre de usuario" required>
+                    </div>
+                    <div class="form-group">
+                        <i class="fas fa-envelope"></i>
+                        <input type="email" id="registerEmail" placeholder="Correo electrónico" required>
+                    </div>
+                    <div class="form-group">
+                        <i class="fas fa-lock"></i>
+                        <input type="password" id="registerPassword" placeholder="Contraseña (mín. 6 caracteres)" required>
+                    </div>
+                    <button type="submit" class="btn-primary">
+                        <i class="fas fa-user-plus"></i> Registrarse
+                    </button>
+                </form>
+                <p class="switch-auth">
+                    ¿Ya tienes cuenta? <a href="#" id="showLogin">Inicia sesión aquí</a>
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Aplicación principal -->
+    <div id="chatApp" class="chat-app hidden">
+        <!-- Sidebar -->
+        <div class="sidebar">
+            <!-- Perfil del usuario -->
+            <div class="user-profile">
+                <div class="avatar" id="userAvatar">
+                    <i class="fas fa-user"></i>
+                </div>
+                <div class="user-info">
+                    <h3 id="userName">Usuario</h3>
+                    <p id="userStatus">En línea</p>
+                </div>
+                <button class="settings-btn" id="settingsBtn">
+                    <i class="fas fa-cog"></i>
+                </button>
+            </div>
+
+            <!-- Navegación -->
+            <div class="nav-tabs">
+                <button class="nav-tab active" data-tab="rooms">
+                    <i class="fas fa-comments"></i> Salas
+                </button>
+                <button class="nav-tab" data-tab="private">
+                    <i class="fas fa-user-friends"></i> Privados
+                </button>
+                <button class="nav-tab" data-tab="users">
+                    <i class="fas fa-users"></i> Usuarios
+                </button>
+            </div>
+
+            <!-- Lista de salas -->
+            <div id="roomsList" class="content-list active">
+                <div class="list-header">
+                    <h4>Salas Públicas</h4>
+                    <button id="refreshRooms" class="refresh-btn">
+                        <i class="fas fa-sync-alt"></i>
+                    </button>
+                </div>
+                <div id="roomsContainer" class="rooms-container">
+                    <!-- Las salas se cargarán dinámicamente -->
+                </div>
+            </div>
+
+            <!-- Lista de chats privados -->
+            <div id="privateList" class="content-list">
+                <div class="list-header">
+                    <h4>Chats Privados</h4>
+                    <button id="refreshPrivate" class="refresh-btn">
+                        <i class="fas fa-sync-alt"></i>
+                    </button>
+                </div>
+                <div id="privateContainer" class="private-container">
+                    <!-- Los chats privados se cargarán dinámicamente -->
+                </div>
+            </div>
+
+            <!-- Lista de usuarios -->
+            <div id="usersList" class="content-list">
+                <div class="list-header">
+                    <h4>Usuarios en línea</h4>
+                    <button id="refreshUsers" class="refresh-btn">
+                        <i class="fas fa-sync-alt"></i>
+                    </button>
+                </div>
+                <div class="search-container">
+                    <input type="text" id="userSearch" placeholder="Buscar usuarios...">
+                    <i class="fas fa-search"></i>
+                </div>
+                <div id="usersContainer" class="users-container">
+                    <!-- Los usuarios se cargarán dinámicamente -->
+                </div>
+            </div>
+
+            <!-- Botón de logout -->
+            <button id="logoutBtn" class="logout-btn">
+                <i class="fas fa-sign-out-alt"></i> Cerrar Sesión
+            </button>
+        </div>
+
+        <!-- Área de chat principal -->
+        <div class="chat-main">
+            <!-- Header del chat -->
+            <div class="chat-header">
+                <div class="chat-info">
+                    <h3 id="currentChatName">Selecciona una sala o chat</h3>
+                    <p id="currentChatDescription">Elige una conversación para empezar</p>
+                </div>
+                <div class="chat-actions">
+                    <button id="chatSettingsBtn" class="action-btn">
+                        <i class="fas fa-info-circle"></i>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Área de mensajes -->
+            <div class="messages-container" id="messagesContainer">
+                <div class="welcome-message">
+                    <i class="fas fa-comments"></i>
+                    <h3>¡Bienvenido a SuperChat!</h3>
+                    <p>Selecciona una sala pública o inicia un chat privado para comenzar a conversar.</p>
+                </div>
+            </div>
+
+            <!-- Indicador de escritura -->
+            <div id="typingIndicator" class="typing-indicator hidden">
+                <div class="typing-dots">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+                <span id="typingText"></span>
+            </div>
+
+            <!-- Área de entrada de mensajes -->
+            <div class="message-input-container">
+                <div class="input-actions">
+                    <button id="fileBtn" class="input-btn" title="Adjuntar archivo">
+                        <i class="fas fa-paperclip"></i>
+                    </button>
+                    <button id="emojiBtn" class="input-btn" title="Emojis">
+                        <i class="fas fa-smile"></i>
+                    </button>
+                </div>
+                <div class="message-input">
+                    <input type="text" id="messageInput" placeholder="Escribe tu mensaje..." disabled>
+                    <button id="sendBtn" class="send-btn" disabled>
+                        <i class="fas fa-paper-plane"></i>
+                    </button>
+                </div>
+                <input type="file" id="fileInput" multiple style="display: none;">
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal de configuraciones -->
+    <div id="settingsModal" class="modal hidden">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Configuraciones</h3>
+                <button class="close-btn" id="closeSettings">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="settings-tab">
+                    <h4>Perfil</h4>
+                    <div class="form-group">
+                        <label>Foto de perfil</label>
+                        <div class="profile-picture-upload">
+                            <div class="current-avatar" id="currentAvatar">
+                                <i class="fas fa-user"></i>
+                            </div>
+                            <button id="uploadAvatarBtn" class="btn-secondary">
+                                Cambiar foto
+                            </button>
+                            <input type="file" id="avatarInput" accept="image/*" style="display: none;">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="settingsUsername">Nombre de usuario</label>
+                        <input type="text" id="settingsUsername" placeholder="Tu nombre de usuario">
+                    </div>
+                    <div class="form-group">
+                        <label for="settingsStatus">Estado/Descripción</label>
+                        <input type="text" id="settingsStatus" placeholder="¿Qué estás haciendo?">
+                    </div>
+                </div>
+                
+                <div class="settings-tab">
+                    <h4>Personalización</h4>
+                    <div class="form-group">
+                        <label for="themeSelect">Tema</label>
+                        <select id="themeSelect">
+                            <option value="light">Claro</option>
+                            <option value="dark">Oscuro</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="backgroundInput">Fondo personalizado</label>
+                        <input type="file" id="backgroundInput" accept="image/*">
+                    </div>
+                </div>
+
+                <div class="settings-actions">
+                    <button id="saveSettings" class="btn-primary">
+                        Guardar cambios
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Notificaciones -->
+    <div id="notifications" class="notifications-container"></div>
+
+    <!-- Scripts -->
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="/js/auth.js"></script>
+    <script src="/js/chat.js"></script>
+    <script src="/js/ui.js"></script>
+    <script src="/js/app.js"></script>
+</body>
+</html>
