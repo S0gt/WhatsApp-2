@@ -14,7 +14,7 @@ const verifyToken = (req, res, next) => {
   }
 
   try {
-    const decoded = jwt.verify(token, process.env.JWT_SECRET || 'superchat_secret');
+    const decoded = jwt.verify(token, process.env.JWT_SECRET || 'whatsapp2_secret');
     req.user = decoded;
     next();
   } catch (error) {
@@ -59,7 +59,7 @@ router.post('/register', async (req, res) => {
     // Generar token
     const token = jwt.sign(
       { userId: result.insertId, username, email },
-      process.env.JWT_SECRET || 'superchat_secret',
+      process.env.JWT_SECRET || 'whatsapp2_secret',
       { expiresIn: '7d' }
     );
 
@@ -116,7 +116,7 @@ router.post('/login', async (req, res) => {
     // Generar token
     const token = jwt.sign(
       { userId: user.id, username: user.username, email: user.email },
-      process.env.JWT_SECRET || 'superchat_secret',
+      process.env.JWT_SECRET || 'whatsapp2_secret',
       { expiresIn: '7d' }
     );
 

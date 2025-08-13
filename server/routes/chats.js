@@ -13,7 +13,7 @@ const verifyToken = (req, res, next) => {
   }
 
   try {
-    const decoded = jwt.verify(token, process.env.JWT_SECRET || 'superchat_secret');
+    const decoded = jwt.verify(token, process.env.JWT_SECRET || 'whatsapp2_secret');
     req.user = decoded;
     next();
   } catch (error) {
