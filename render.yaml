@@ -1,0 +1,18 @@
+# Configuración para Render
+# Este archivo es leído automáticamente por Render
+
+# Build Command (ya configurado en package.json)
+# npm install
+
+# Start Command (ya configurado en package.json)  
+# npm start
+
+# Variables de entorno requeridas:
+# NODE_ENV=production
+# PORT=10000 (Render lo asigna automáticamente)
+# DB_HOST=tu-database-host
+# DB_USER=tu-database-user  
+# DB_PASSWORD=tu-database-password
+# DB_NAME=tu-database-name
+# JWT_SECRET=tu-jwt-secret-seguro
+# SOCKET_CORS_ORIGIN=https://tu-app.onrender.com
