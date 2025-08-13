@@ -28,26 +28,46 @@ Start Command: npm start
 Instance Type: Free (para empezar)
 ```
 
-#### C. Variables de entorno necesarias
+#### C. Variables de entorno COMPLETAS para Render
 ```env
 NODE_ENV=production
 PORT=10000
-DB_HOST=tu-database-host
-DB_USER=tu-database-user
-DB_PASSWORD=tu-database-password
-DB_NAME=whatsapp2
-JWT_SECRET=un-secret-muy-seguro-y-largo-para-produccion
+
+# Base de datos MySQL (Railway example)
+DB_HOST=containers-us-west-xxx.railway.app
+DB_USER=root
+DB_PASSWORD=tu-password-generado-por-railway
+DB_NAME=railway
+DB_PORT=3306
+
+# Seguridad
+JWT_SECRET=un-secret-muy-seguro-de-al-menos-32-caracteres
+
+# CORS y Socket.IO
 SOCKET_CORS_ORIGIN=https://tu-app-name.onrender.com
+
+# Archivos
 MAX_FILE_SIZE=52428800
 UPLOAD_DIR=uploads
 ```
 
-### 3. Base de Datos
+### 3. Base de Datos MySQL Externa (CRÍTICO)
 
-#### Opción A: MySQL en Railway (Recomendado)
+⚠️ **IMPORTANTE**: Render NO incluye MySQL. Necesitas una base de datos externa.
+
+#### Opción A: Railway (Recomendado - Más fácil)
 1. Ve a [railway.app](https://railway.app)
-2. Crea proyecto → Add MySQL
-3. Copia las credenciales de conexión
+2. Crear cuenta con GitHub
+3. **New Project** → **Add MySQL**
+4. En **Variables** tab, copia:
+   ```
+   MYSQL_HOST=containers-us-west-xxx.railway.app
+   MYSQL_USER=root
+   MYSQL_PASSWORD=xxxxxxxxxx
+   MYSQL_DATABASE=railway
+   MYSQL_PORT=3306
+   ```
+5. **IMPORTANTE**: Usar estos valores en Render
 4. Úsalas en las variables de entorno de Render
 
 #### Opción B: MySQL en PlanetScale

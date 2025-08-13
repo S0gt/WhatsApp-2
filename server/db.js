@@ -7,9 +7,16 @@ const pool = mysql.createPool({
   user: process.env.DB_USER || 'root',
   password: process.env.DB_PASSWORD || '',
   database: process.env.DB_NAME || 'whatsapp2',
+  port: process.env.DB_PORT || 3306,
   waitForConnections: true,
   connectionLimit: 10,
-  queueLimit: 0
+  queueLimit: 0,
+  acquireTimeout: 60000,
+  timeout: 60000,
+  reconnect: true,
+  ssl: process.env.NODE_ENV === 'production' ? {
+    rejectUnauthorized: false
+  } : false
 });
 
 // Promisificar para usar async/await
@@ -18,11 +25,22 @@ const promisePool = pool.promise();
 // Función para probar la conexión
 async function testConnection() {
   try {
-    const [rows] = await promisePool.execute('SELECT 1');
+    console.log('🔍 Intentando conectar a MySQL...');
+    console.log(`📍 Host: ${process.env.DB_HOST || 'localhost'}`);
+    console.log(`👤 Usuario: ${process.env.DB_USER || 'root'}`);
+    console.log(`🗄️ Base de datos: ${process.env.DB_NAME || 'whatsapp2'}`);
+    console.log(`🔌 Puerto: ${process.env.DB_PORT || 3306}`);
+    
+    const [rows] = await promisePool.execute('SELECT 1 as test');
     console.log('✅ Conexión a MySQL establecida correctamente');
+    console.log('📊 Resultado de prueba:', rows[0]);
     return true;
   } catch (error) {
-    console.error('❌ Error conectando a MySQL:', error.message);
+    console.error('❌ Error conectando a MySQL:');
+    console.error('📝 Mensaje:', error.message);
+    console.error('🔍 Código:', error.code);
+    console.error('📊 Errno:', error.errno);
+    if (error.sqlState) console.error('🔗 SQL State:', error.sqlState);
     return false;
   }
 }
